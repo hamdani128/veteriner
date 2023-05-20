@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Simple_login
 {
@@ -7,18 +7,18 @@ class Simple_login
 
 	public function __construct()
 	{
-        $this->CI =& get_instance();
-        // load user model
-        $this->CI->load->model('user_model');
+		$this->CI = &get_instance();
+		// load user model
+		$this->CI->load->model('user_model');
 	}
 
 	// Fungsi login
-	public function login($username,$password)
+	public function login($username, $password)
 	{
 		// Check user yang login
-		$user_login = $this->CI->user_model->login($username,$password);
+		$user_login = $this->CI->user_model->login($username, $password);
 		// Kalau ada, maka masuk ke halaman dashboard
-		if($user_login) {
+		if ($user_login) {
 			$id_user 		= $user_login->id_user;
 			$id_bagian 		= $user_login->id_bagian;
 			$nama_bagian 	= $user_login->nama_bagian;
@@ -26,27 +26,27 @@ class Simple_login
 			$nama 			= $user_login->nama;
 			$akses_level 	= $user_login->akses_level;
 			// Create session utk login
-			$this->CI->session->set_userdata('id_user',$id_user);
-			$this->CI->session->set_userdata('id_bagian',$id_bagian);
-			$this->CI->session->set_userdata('nama_bagian',$nama_bagian);
-			$this->CI->session->set_userdata('username',$username);
-			$this->CI->session->set_userdata('nama',$nama);
-			$this->CI->session->set_userdata('akses_level',$akses_level);
+			$this->CI->session->set_userdata('id_user', $id_user);
+			$this->CI->session->set_userdata('id_bagian', $id_bagian);
+			$this->CI->session->set_userdata('nama_bagian', $nama_bagian);
+			$this->CI->session->set_userdata('username', $username);
+			$this->CI->session->set_userdata('nama', $nama);
+			$this->CI->session->set_userdata('akses_level', $akses_level);
 			// Lalu redirect masuk ke halaman dashboard
-			$this->CI->session->set_flashdata('sukses', 'Anda berhasil login');
+			$this->CI->session->set_flashdata('sukses_login', 'Anda berhasil login');
 			// Periksa user mengakses halaman mana sebelumnya
-			if($this->CI->session->userdata('pengalihan')) {
+			if ($this->CI->session->userdata('pengalihan')) {
 				// Jika, ada alihkan
 				$pengalihan = $this->CI->session->userdata('pengalihan');
-				redirect($pengalihan,'refresh');
-			}else{
+				redirect($pengalihan, 'refresh');
+			} else {
 				// Jika ga ada, default masuk ke halaman dasbor
-				redirect(base_url('admin/dasbor'),'refresh');
+				redirect(base_url('admin/dasbor'), 'refresh');
 			}
-		}else{
+		} else {
 			// Kalau ga ada user yg cocok, suruh login lagi
 			$this->CI->session->set_flashdata('warning', 'Username/password salah');
-			redirect(base_url('login'),'refresh');
+			redirect(base_url('login'), 'refresh');
 		}
 	}
 
@@ -62,19 +62,20 @@ class Simple_login
 		$this->CI->session->unset_userdata('akses_level');
 		$this->CI->session->unset_userdata('pengalihan');
 		// Redirect ke halaman login
-		$this->CI->session->set_flashdata('sukses', 'Anda berhasil logout');
-		redirect(base_url('login'),'refresh');
+		$this->CI->session->set_flashdata('sukses_logout', 'Anda berhasil logout');
+		redirect(base_url('login'), 'refresh');
 	}
 
 	// Fungsi check login: seseorang sudah login atau belum
 	public function check_login($pengalihan)
 	{
 		// Check status login (kita ambil status username dan akses level)
-		if($this->CI->session->userdata('username') == "" && 
-			$this->CI->session->userdata('akses_level') == "")
-		{
+		if (
+			$this->CI->session->userdata('username') == "" &&
+			$this->CI->session->userdata('akses_level') == ""
+		) {
 			$this->CI->session->set_flashdata('warning', 'Anda belum login');
-			redirect(base_url('login'),'refresh');
+			redirect(base_url('login'), 'refresh');
 		}
 	}
 
@@ -82,11 +83,12 @@ class Simple_login
 	public function cek_login($pengalihan)
 	{
 		// Check status login (kita ambil status username dan akses level)
-		if($this->CI->session->userdata('username') == "" && 
-			$this->CI->session->userdata('akses_level') == "")
-		{
+		if (
+			$this->CI->session->userdata('username') == "" &&
+			$this->CI->session->userdata('akses_level') == ""
+		) {
 			$this->CI->session->set_flashdata('warning', 'Anda belum login');
-			redirect(base_url('login'),'refresh');
+			redirect(base_url('login'), 'refresh');
 		}
 	}
 }

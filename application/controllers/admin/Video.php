@@ -18,7 +18,6 @@ class Video extends CI_Controller {
 	// Index
 	public function index() {
 		$video	= $this->video_model->listing();
-		
 		$data = array(	'title'	=> 'Video',
 						'video'	=> $video,
 						'isi'	=> 'admin/video/list');

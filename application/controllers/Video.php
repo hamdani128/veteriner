@@ -28,11 +28,14 @@ class Video extends CI_Controller {
 		$video 	= $this->video_model->video($config['per_page'], $page);
 		// End paginasi
 
+		// pengujian
+		$pengujian = $this->db->select('*')->from('pengujian')->get()->result();
 		$data = array(	'title'		=> 'Video - '.$site->namaweb,
 						'deskripsi'	=> 'Video - '.$site->namaweb,
 						'keywords'	=> 'Video - '.$site->namaweb,
 						'pagin' 	=> $this->pagination->create_links(),
 						'video'		=> $video,
+						'pengujian'    => $pengujian,
 						'isi'		=> 'video/list');
 		$this->load->view('layout/wrapper', $data, FALSE);
 	}
@@ -70,6 +73,24 @@ class Video extends CI_Controller {
 		}
 		echo json_encode($temp_data);
 	}
+
+	public function check_pengujian()
+	{
+		$inp = $this->input;
+		$pengujian = $inp->post("pengujian");
+		$jumlah = $inp->post("jumlah");
+		$kategori = $inp->post("kategori");
+		$data =  $this->db->get_where("pengujian", array("pengujian"=>$pengujian))->row_object();
+		$harga = $data->harga;
+		if($kategori == 'mahasiswa'){
+			$hasil = ($harga * $jumlah) * 0.5;
+		}else{
+			$hasil = $harga * $jumlah;
+		}
+		$temp['hasil'] = $hasil;
+		echo json_encode($temp);
+	}
+
 }
 
 /* End of file Video.php */

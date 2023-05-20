@@ -1,4 +1,4 @@
-<?php  
+<?php
 header("X-Frame-Options: DENY");
 header("X-Frame-Options: SAMEORIGIN");
 ?>
@@ -29,8 +29,7 @@ header("X-Frame-Options: SAMEORIGIN");
     <!-- iCheck -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/iCheck/flat/blue.css">
     <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet"
-        href="<?php echo base_url() ?>assets/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <!-- jQuery -->
     <script src="<?php echo base_url() ?>assets/admin/plugins/jquery/jquery.min.js"></script>
     <!-- JQUERY UI -->
@@ -39,30 +38,32 @@ header("X-Frame-Options: SAMEORIGIN");
     <!-- SWEETALERT -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/sweetalert/sweetalert2.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/sweetalert/sweetalert2.min.css">
+    <!-- summernote -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <!-- jquery chained -->
     <script src="<?php echo base_url('assets/jquery-chained/jquery.chained.min.js') ?>" type="text/javascript"></script>
     <style type="text/css" media="screen">
-    .btn-group-xs>.btn,
-    .btn-xs {
-        padding: .25rem .4rem;
-        font-size: .875rem;
-        line-height: .5;
-        border-radius: .2rem;
-    }
+        .btn-group-xs>.btn,
+        .btn-xs {
+            padding: .25rem .4rem;
+            font-size: .875rem;
+            line-height: .5;
+            border-radius: .2rem;
+        }
 
-    .text-strong {
-        font-weight: bold;
-        background-color: #FFC;
-    }
+        .text-strong {
+            font-weight: bold;
+            background-color: #FFC;
+        }
 
-    .select2 {
-        z-index: 10050 !important;
-    }
+        .select2 {
+            z-index: 10050 !important;
+        }
 
-    span.select2-container {
-        z-index: 10050 !important;
-    }
+        span.select2-container {
+            z-index: 10050 !important;
+        }
     </style>
     <!-- timepicker -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/jquery-timepicker/jquery.timepicker.min.css">

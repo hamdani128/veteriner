@@ -14,22 +14,25 @@
                     <div class="slider-item">
                         <img src="<?php echo base_url('assets/upload/image/'.$slider->gambar); ?>" alt="bg-slider-2">
                         <div class="slider-content-area">
-                            <div class="container">
+                            <div class="container" style="padding-top: -300px;">
                                 <div class="row">
-                                    <div class="col-md-6"></div>
+                                    <div class="col-md-1"></div>
                                     <!-- .col-md-6 -->
-                                    <div class="col-md-6">
+                                    <div class="col-md-10">
                                         <div class="slider-content">
                                             <!-- <h3><?php echo $site->namaweb ?></h3> -->
                                             <h3><?php echo $slider->judul_galeri ?></h3>
                                             <h5><?php echo strip_tags($slider->isi) ?></h5>
-                                            <div class="slider-btn">
+                                            <div class="slider-btn" style="padding-bottom: 300px;">
                                                 <a href="<?php echo $slider->website ?>" class="btn btn-default">Baca
                                                     selengkapnya...</a>
                                             </div>
                                             <!-- .slider-btn -->
                                         </div>
                                         <!-- .carousel-caption -->
+                                    </div>
+                                    <div class="col-md-1">
+
                                     </div>
                                     <!-- .col-md-6 -->
                                 </div>
